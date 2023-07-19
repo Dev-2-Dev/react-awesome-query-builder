@@ -126,6 +126,7 @@ class Rule extends PureComponent {
       config={config}
       selectedField={this.props.selectedField}
       setField={!immutableFieldsMode ? this.props.setField : dummyFn}
+      removeSelf={!immutableFieldsMode ? this.props.removeSelf : dummyFn}
       parentField={this.props.parentField}
       readonly={immutableFieldsMode || isLocked}
       id={this.props.id}
@@ -212,7 +213,7 @@ class Rule extends PureComponent {
   renderBeforeWidget() {
     const {config} = this.props;
     const { renderBeforeWidget } = config.settings;
-    return renderBeforeWidget 
+    return renderBeforeWidget
         && <Col key={"before-widget-for-" +this.props.selectedOperator} className="rule--before-widget">
           {typeof renderBeforeWidget === "function" ? renderBeforeWidget(this.props) : renderBeforeWidget}
         </Col>;
@@ -221,7 +222,7 @@ class Rule extends PureComponent {
   renderAfterWidget() {
     const {config} = this.props;
     const { renderAfterWidget } = config.settings;
-    return renderAfterWidget 
+    return renderAfterWidget
         && <Col key={"after-widget-for-" +this.props.selectedOperator} className="rule--after-widget">
           {typeof renderAfterWidget === "function" ? renderAfterWidget(this.props) : renderAfterWidget}
         </Col>;
@@ -231,7 +232,7 @@ class Rule extends PureComponent {
     const {config, valueError} = this.props;
     const { renderRuleError, showErrorMessage } = config.settings;
     const oneValueError = valueError && valueError.toArray().filter(e => !!e).shift() || null;
-    return showErrorMessage && oneValueError 
+    return showErrorMessage && oneValueError
         && <div className="rule--error">
           {renderRuleError ? renderRuleError({error: oneValueError}) : oneValueError}
         </div>;
@@ -251,14 +252,14 @@ class Rule extends PureComponent {
   renderDel() {
     const {config, isLocked} = this.props;
     const {
-      deleteLabel, 
-      immutableGroupsMode, 
+      deleteLabel,
+      immutableGroupsMode,
       renderButton: Btn,
       canDeleteLocked
     } = config.settings;
 
     return !immutableGroupsMode && (!isLocked || isLocked && canDeleteLocked) && (
-      <Btn 
+      <Btn
         type="delRule" onClick={this.removeSelf} label={deleteLabel} config={config}
       />
     );
@@ -270,9 +271,9 @@ class Rule extends PureComponent {
       lockLabel, lockedLabel, showLock,
       renderSwitch: Switch
     } = config.settings;
-      
+
     return showLock && !(isLocked && !isTrueLocked) && (
-      <Switch 
+      <Switch
         type="lock" id={id} value={isLocked} setValue={this.setLock} label={lockLabel} checkedLabel={lockedLabel} hideLabel={true} config={config}
       />
     );
@@ -298,7 +299,7 @@ class Rule extends PureComponent {
     const drag = this.renderDrag();
     const lock = this.renderLock();
     const del = this.renderDel();
-      
+
     return (
       <>
         {drag}

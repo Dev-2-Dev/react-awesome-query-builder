@@ -19,6 +19,7 @@ export default class Field extends PureComponent {
     readonly: PropTypes.bool,
     //actions
     setField: PropTypes.func.isRequired,
+    removeSelf: PropTypes.func,
   };
 
   constructor(props) {
@@ -93,7 +94,7 @@ export default class Field extends PureComponent {
       const tooltip = field.tooltip;
       const subpath = (path ? path : []).concat(fieldKey);
       const disabled = field.disabled;
-            
+
       if (field.hideForSelect)
         return undefined;
 
@@ -124,15 +125,16 @@ export default class Field extends PureComponent {
   }
 
   render() {
-    const {config, customProps, setField, readonly, id, groupId} = this.props;
+    const {config, customProps, setField, removeSelf, readonly, id, groupId} = this.props;
     const {renderField} = config.settings;
     const renderProps = {
       id,
       groupId,
-      config, 
-      customProps, 
+      config,
+      customProps,
       readonly,
       setField,
+      removeSelf,
       ...this.meta
     };
     return renderField(renderProps);

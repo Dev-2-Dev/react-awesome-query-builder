@@ -6,7 +6,7 @@ import {BasicGroup} from "./Group";
 import {RuleGroupActions} from "./RuleGroupActions";
 import FieldWrapper from "../rule/FieldWrapper";
 import {useOnPropsChanged} from "../../utils/reactUtils";
-import {ConfirmFn} from "../utils";
+import {ConfirmFn, dummyFn} from "../utils";
 
 
 @GroupContainer
@@ -30,7 +30,7 @@ class RuleGroup extends BasicGroup {
   }
 
   childrenClassName = () => "rule_group--children";
-  
+
   renderHeaderWrapper = () => null;
   renderFooterWrapper = () => null;
   renderConjs = () => null;
@@ -57,7 +57,7 @@ class RuleGroup extends BasicGroup {
   }
 
   renderField() {
-    const { config, selectedField, setField, parentField, id, groupId, isLocked } = this.props;
+    const { config, selectedField, setField, removeSelf, parentField, id, groupId, isLocked } = this.props;
     const { immutableFieldsMode } = config.settings;
     return <FieldWrapper
       key="field"
@@ -65,6 +65,7 @@ class RuleGroup extends BasicGroup {
       config={config}
       selectedField={selectedField}
       setField={setField}
+      removeSelf={removeSelf}
       parentField={parentField}
       readonly={immutableFieldsMode || isLocked}
       id={id}

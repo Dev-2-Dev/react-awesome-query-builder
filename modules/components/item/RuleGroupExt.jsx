@@ -38,7 +38,7 @@ class RuleGroupExt extends BasicGroup {
   }
 
   childrenClassName = () => "rule_group_ext--children";
-  
+
   renderFooterWrapper = () => null;
   canAddGroup = () => false;
   canAddRule = () => true;
@@ -47,7 +47,7 @@ class RuleGroupExt extends BasicGroup {
   renderHeaderWrapper() {
     return (
       <div key="group-header" className={classNames(
-        "group--header", 
+        "group--header",
         this.isOneChild() ? "one--child" : "",
         this.showDragIcon() ? "with--drag" : "hide--drag",
         this.showConjs() && (!this.isOneChild() || this.showNot()) ? "with--conjs" : "hide--conjs"
@@ -99,7 +99,7 @@ class RuleGroupExt extends BasicGroup {
   }
 
   renderField() {
-    const { config, selectedField, setField, parentField, id, groupId, isLocked } = this.props;
+    const { config, selectedField, setField, removeSelf, parentField, id, groupId, isLocked } = this.props;
     const { immutableFieldsMode } = config.settings;
     return <FieldWrapper
       key="field"
@@ -107,6 +107,7 @@ class RuleGroupExt extends BasicGroup {
       config={config}
       selectedField={selectedField}
       setField={setField}
+      removeSelf={removeSelf}
       parentField={parentField}
       readonly={immutableFieldsMode || isLocked}
       id={id}
