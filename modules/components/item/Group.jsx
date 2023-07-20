@@ -29,6 +29,7 @@ export class BasicGroup extends PureComponent {
     isDraggingTempo: PropTypes.bool,
     isLocked: PropTypes.bool,
     isTrueLocked: PropTypes.bool,
+    valueCustom: PropTypes.any,
     //actions
     handleDraggerMouseDown: PropTypes.func,
     onDragStart: PropTypes.func,

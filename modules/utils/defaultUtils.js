@@ -90,10 +90,19 @@ export const defaultGroupConjunction = (config, fieldConfig = null) => {
 export const defaultConjunction = (config) =>
   config.settings.defaultConjunction || Object.keys(config.conjunctions)[0];
 
-export const defaultGroupProperties = (config, fieldConfig = null) => new Immutable.Map({
-  conjunction: defaultGroupConjunction(config, fieldConfig),
-  not: false
-});
+export const defaultGroupProperties = (config, fieldConfig = null) => {
+  let current = new Immutable.Map({
+    conjunction: defaultGroupConjunction(config, fieldConfig),
+    not: false
+  });
+  
+  if(config.settings.defaultValueCustomGroup) {
+    current = current
+        .set("valueCustom", new Immutable.Map(config.settings.defaultValueCustomGroup));
+  }
+  
+  return current
+};
 
 export const defaultItemProperties = (config, item) => {
   return item && item.type == "group" 

@@ -259,12 +259,18 @@ export default (skin: string) => {
       showSearch: true
     },
     defaultValueCustomRule: {
-      v1: true,
-      v2: false,
-      v3: 'string',
-      v4: 198178,
-      v5: [1, 2, 3],
-      v6: {a: 'a', b: 'b'},
+      isRule: true,
+      string: 'string',
+      number: 198178,
+      array: [1, 2, 3],
+      object: {a: 'a', b: 'b'}
+    },
+    defaultValueCustomGroup: {
+      isGroup: true,
+      string: 'string',
+      number: 198178,
+      array: [1, 2, 3],
+      object: {a: 'a', b: 'b'}
     },
     renderField: (props) => {
       console.log('renderField:Start', props);

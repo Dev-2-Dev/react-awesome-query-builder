@@ -186,7 +186,8 @@ const createGroupContainer = (Group) =>
               config={this.props.config}
               children1={this.props.children1}
               actions={this.props.actions}
-              //tree={this.props.tree}
+              valueCustom={this.props.valueCustom || null}
+                //tree={this.props.tree}
               reordableNodesCnt={this.props.reordableNodesCnt}
               totalRulesCnt={this.props.totalRulesCnt}
               selectedField={this.props.field || null}
@@ -225,7 +226,8 @@ const createGroupContainer = (Group) =>
               config={this.props.config}
               children1={this.props.children1}
               actions={this.props.actions}
-              //tree={this.props.tree}
+              valueCustom={this.props.valueCustom || null}
+                //tree={this.props.tree}
               reordableNodesCnt={this.props.reordableNodesCnt}
               totalRulesCnt={this.props.totalRulesCnt}
               selectedField={this.props.field || null}
