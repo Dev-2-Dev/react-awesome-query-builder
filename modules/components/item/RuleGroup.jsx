@@ -57,7 +57,7 @@ class RuleGroup extends BasicGroup {
   }
 
   renderField() {
-    const { config, selectedField, setField, removeSelf, parentField, id, groupId, isLocked } = this.props;
+    const { config, selectedField, setField, removeSelf, setValueCustom, valueCustom, parentField, id, groupId, isLocked } = this.props;
     const { immutableFieldsMode } = config.settings;
     return <FieldWrapper
       key="field"
@@ -66,10 +66,12 @@ class RuleGroup extends BasicGroup {
       selectedField={selectedField}
       setField={setField}
       removeSelf={removeSelf}
+      setValueCustom={setValueCustom}
       parentField={parentField}
       readonly={immutableFieldsMode || isLocked}
       id={id}
       groupId={groupId}
+      valueCustom={valueCustom}
     />;
   }
 

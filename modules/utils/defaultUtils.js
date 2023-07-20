@@ -69,7 +69,13 @@ export const defaultRuleProperties = (config, parentRuleGroupPath = null, item =
         .set("valueError", newValueError);
     }
   }
-  return current; 
+
+  if(config.settings.defaultValueCustomRule) {
+    current = current
+        .set("valueCustom", new Immutable.Map(config.settings.defaultValueCustomRule));
+  }
+
+  return current;
 };
 
 

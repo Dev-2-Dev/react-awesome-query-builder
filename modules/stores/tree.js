@@ -627,6 +627,17 @@ const setOperatorOption = (state, path, name, value) => {
 
 /**
  * @param {Immutable.Map} state
+ * @param {Immutable.List} path
+ * @param {string} name
+ * @param {*} value
+ * @returns {__Cursor.Cursor | Immutable.List<T> | Immutable.Map<K, V> | List<T> | Map<K, V>}
+ */
+const setValueCustom = (state, path, name, value) => {
+  return state.setIn(expandTreePath(path, "properties", "valueCustom", name), value);
+};
+
+/**
+ * @param {Immutable.Map} state
  */
 const checkEmptyGroups = (state, config) => {
   const {canLeaveEmptyGroup} = config.settings;
@@ -813,6 +824,11 @@ export default (config, tree, getMemoizedTree) => {
     case constants.SET_DRAG_END: {
       set.tree = checkEmptyGroups(state.tree, config);
       set = { ...set, ...emptyDrag };
+      break;
+    }
+
+    case constants.SET_VALUE_CUSTOM: {
+      set.tree = setValueCustom(state.tree, action.path, action.name, action.value);
       break;
     }
 

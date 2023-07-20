@@ -26,6 +26,7 @@ class Rule extends PureComponent {
     config: PropTypes.object.isRequired,
     value: PropTypes.any, //depends on widget
     valueSrc: PropTypes.any,
+    valueCustom: PropTypes.any,
     asyncListValues: PropTypes.array,
     isDraggingMe: PropTypes.bool,
     isDraggingTempo: PropTypes.bool,
@@ -41,6 +42,7 @@ class Rule extends PureComponent {
     setOperatorOption: PropTypes.func,
     setLock: PropTypes.func,
     removeSelf: PropTypes.func,
+    setValueCustom: PropTypes.func,
     setValue: PropTypes.func,
     setValueSrc: PropTypes.func,
     reordableNodesCnt: PropTypes.number,
@@ -117,7 +119,7 @@ class Rule extends PureComponent {
   }
 
   renderField() {
-    const {config, isLocked} = this.props;
+    const {config, isLocked, valueCustom} = this.props;
     const { immutableFieldsMode } = config.settings;
 
     return <FieldWrapper
@@ -127,10 +129,12 @@ class Rule extends PureComponent {
       selectedField={this.props.selectedField}
       setField={!immutableFieldsMode ? this.props.setField : dummyFn}
       removeSelf={!immutableFieldsMode ? this.props.removeSelf : dummyFn}
+      setValueCustom={!immutableFieldsMode ? this.props.setValueCustom : dummyFn}
       parentField={this.props.parentField}
       readonly={immutableFieldsMode || isLocked}
       id={this.props.id}
       groupId={this.props.groupId}
+      valueCustom={valueCustom}
     />;
   }
 

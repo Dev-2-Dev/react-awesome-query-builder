@@ -20,6 +20,7 @@ export default class Field extends PureComponent {
     //actions
     setField: PropTypes.func.isRequired,
     removeSelf: PropTypes.func,
+    setValueCustom: PropTypes.func,
   };
 
   constructor(props) {
@@ -125,7 +126,7 @@ export default class Field extends PureComponent {
   }
 
   render() {
-    const {config, customProps, setField, removeSelf, readonly, id, groupId} = this.props;
+    const {config, customProps, setField, removeSelf, setValueCustom, valueCustom, readonly, id, groupId} = this.props;
     const {renderField} = config.settings;
     const renderProps = {
       id,
@@ -135,6 +136,8 @@ export default class Field extends PureComponent {
       readonly,
       setField,
       removeSelf,
+      setValueCustom,
+      valueCustom,
       ...this.meta
     };
     return renderField(renderProps);

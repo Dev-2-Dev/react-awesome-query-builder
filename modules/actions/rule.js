@@ -72,3 +72,18 @@ export const setOperatorOption = (config, path, name, value) => ({
   value: value,
   config: config
 });
+
+/**
+ * @param config
+ * @param path
+ * @param name
+ * @param value
+ * @returns {{path: *, name: *, type: string, value: *, config: *}}
+ */
+export const setValueCustom = (config, path, name, value) => ({
+  type: constants.SET_VALUE_CUSTOM,
+  path: path,
+  name: name,
+  value: value,
+  config: config
+});

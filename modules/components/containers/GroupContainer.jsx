@@ -138,6 +138,10 @@ const createGroupContainer = (Group) =>
       this.props.actions.setValue(this.props.path, delta, value, type);
     };
 
+    setValueCustom = (name, value) => {
+      this.props.actions.setValueCustom(this.props.path, name, value);
+    };
+
     render() {
       const isDraggingMe = this.props.dragging.id == this.props.id;
       const currentNesting = this.props.path.size;
@@ -175,6 +179,7 @@ const createGroupContainer = (Group) =>
               addDefaultCaseGroup={this.dummyFn}
               addRule={this.dummyFn}
               setField={this.dummyFn}
+              setValueCustom={this.dummyFn}
               setOperator={this.dummyFn}
               setValue={this.dummyFn}
               value={this.props.value || null}
@@ -215,6 +220,7 @@ const createGroupContainer = (Group) =>
               setField={isInDraggingTempo ? this.dummyFn : this.setField}
               setOperator={isInDraggingTempo ? this.dummyFn : this.setOperator}
               setValue={isInDraggingTempo ? this.dummyFn : this.setValue}
+              setValueCustom={isInDraggingTempo ? this.dummyFn : this.setValueCustom}
               value={this.props.value || null}
               config={this.props.config}
               children1={this.props.children1}

@@ -5,7 +5,7 @@ import {Col} from "../utils";
 
 export default class FieldWrapper extends PureComponent {
   render() {
-    const {config, selectedField, setField, removeSelf, parentField, classname, readonly, id, groupId} = this.props;
+    const {config, selectedField, setField, removeSelf, setValueCustom, valueCustom, parentField, classname, readonly, id, groupId} = this.props;
     return (
       <Col className={classname}>
         { config.settings.showLabels
@@ -17,10 +17,12 @@ export default class FieldWrapper extends PureComponent {
           parentField={parentField}
           setField={setField}
           removeSelf={removeSelf}
+          setValueCustom={setValueCustom}
           customProps={config.settings.customFieldSelectProps}
           readonly={readonly}
           id={id}
           groupId={groupId}
+          valueCustom={valueCustom}
         />
       </Col>
     );

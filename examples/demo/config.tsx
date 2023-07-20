@@ -258,7 +258,31 @@ export default (skin: string) => {
     customFieldSelectProps: {
       showSearch: true
     },
-    // renderField: (props) => <FieldCascader {...props} />,
+    defaultValueCustomRule: {
+      v1: true,
+      v2: false,
+      v3: 'string',
+      v4: 198178,
+      v5: [1, 2, 3],
+      v6: {a: 'a', b: 'b'},
+    },
+    renderField: (props) => {
+      console.log('renderField:Start', props);
+      return (
+          <React.Fragment>
+            <FieldSelect {...props} />
+            {props.setValueCustom && (
+                <a onClick={() => {
+                  const value = (new Date()).toISOString();
+                  const id = (new Date()).getTime();
+                  props.setValueCustom('prop' + id, value)
+                }}>
+                  props.setValueCustom
+                </a>
+            )}
+          </React.Fragment>
+      )
+    },
     // renderOperator: (props) => <FieldDropdown {...props} />,
     // renderFunc: (props) => <FieldSelect {...props} />,
     // maxNumberOfRules: 10 // number of rules can be added to the query builder

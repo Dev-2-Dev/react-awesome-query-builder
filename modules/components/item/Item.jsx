@@ -24,6 +24,9 @@ const getProperties = (props) => {
   if (properties.isLocked) {
     result.isTrueLocked = true;
   }
+  if (properties.valueCustom) {
+    properties.valueCustom = properties.valueCustom.toObject();
+  }
   return result;
 };
 

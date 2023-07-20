@@ -68,6 +68,10 @@ const createRuleContainer = (Rule) =>
       this.props.actions.setValueSrc(this.props.path, delta, srcKey);
     };
 
+    setValueCustom = (name, value) => {
+      this.props.actions.setValueCustom(this.props.path, name, value);
+    };
+
     shouldComponentUpdate(nextProps, nextState) {
       let prevProps = this.props;
       let prevState = this.state;
@@ -125,12 +129,14 @@ const createRuleContainer = (Rule) =>
               removeSelf={this.dummyFn}
               setValue={this.dummyFn}
               setValueSrc={this.dummyFn}
+              setValueCustom={this.dummyFn}
               selectedField={this.props.field || null}
               parentField={this.props.parentField || null}
               selectedOperator={this.props.operator || null}
               value={this.props.value || null}
               valueSrc={this.props.valueSrc || null}
               valueError={this.props.valueError || null}
+              valueCustom={this.props.valueCustom || null}
               operatorOptions={this.props.operatorOptions}
               config={this.props.config}
               reordableNodesCnt={this.props.reordableNodesCnt}
@@ -155,12 +161,14 @@ const createRuleContainer = (Rule) =>
               setOperatorOption={isInDraggingTempo ? this.dummyFn : this.setOperatorOption}
               setValue={isInDraggingTempo ? this.dummyFn : this.setValue}
               setValueSrc={isInDraggingTempo ? this.dummyFn : this.setValueSrc}
+              setValueCustom={isInDraggingTempo ? this.dummyFn : this.setValueCustom}
               selectedField={this.props.field || null}
               parentField={this.props.parentField || null}
               selectedOperator={this.props.operator || null}
               value={this.props.value || null}
               valueSrc={this.props.valueSrc || null}
               valueError={this.props.valueError || null}
+              valueCustom={this.props.valueCustom || null}
               operatorOptions={this.props.operatorOptions}
               config={this.props.config}
               reordableNodesCnt={this.props.reordableNodesCnt}
