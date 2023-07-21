@@ -360,6 +360,11 @@ export default (skin: string) => {
         }
       }
     },
+    resultsEmpty: {
+      label: "Results empty",
+      type: "!group",
+      subfields: {}
+    },
     cars: {
       label: "Cars",
       type: "!group",

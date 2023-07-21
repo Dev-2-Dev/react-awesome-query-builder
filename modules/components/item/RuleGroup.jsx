@@ -7,7 +7,7 @@ import {RuleGroupActions} from "./RuleGroupActions";
 import FieldWrapper from "../rule/FieldWrapper";
 import {useOnPropsChanged} from "../../utils/reactUtils";
 import {ConfirmFn, dummyFn} from "../utils";
-
+import {getFieldConfig} from "../../utils/configUtils";
 
 @GroupContainer
 @Draggable("group rule_group")
@@ -46,22 +46,32 @@ class RuleGroup extends BasicGroup {
   }
 
   renderChildrenWrapper() {
-    const { config } = this.props;
+    const { config, selectedField } = this.props;
     const {
       ruleGroupActionsPosition
     } = config.settings;
-    
+
+    const fieldConfig = getFieldConfig(config, selectedField) || {};
+    let elementsActionsAndChildrenWrapper = null;
+    if(fieldConfig.subfields && Object.values(fieldConfig.subfields).length) {
+      elementsActionsAndChildrenWrapper = (
+          <>
+            {(ruleGroupActionsPosition === 'before') && (
+                this.renderActions()
+            )}
+            {super.renderChildrenWrapper()}
+            {(ruleGroupActionsPosition === 'after') && (
+                this.renderActions()
+            )}
+          </>
+      )
+    }
+
     return (
       <>
         {this.renderDrag()}
         {this.renderField()}
-        {(ruleGroupActionsPosition === 'before') && (
-            this.renderActions()
-        )}
-        {super.renderChildrenWrapper()}
-        {(ruleGroupActionsPosition === 'after') && (
-            this.renderActions()
-        )}
+        {elementsActionsAndChildrenWrapper}
       </>
     );
   }
