@@ -86,6 +86,7 @@ export const settings = {
   delGroupLabel: "",
   notLabel: "Not",
   valueSourcesPopupTitle: "Select value source",
+  ruleGroupActionsPosition: 'before',
   removeRuleConfirmOptions: null,
   removeGroupConfirmOptions: null,
 

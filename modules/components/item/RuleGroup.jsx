@@ -46,12 +46,22 @@ class RuleGroup extends BasicGroup {
   }
 
   renderChildrenWrapper() {
+    const { config } = this.props;
+    const {
+      ruleGroupActionsPosition
+    } = config.settings;
+    
     return (
       <>
         {this.renderDrag()}
         {this.renderField()}
-        {this.renderActions()}
+        {(ruleGroupActionsPosition === 'before') && (
+            this.renderActions()
+        )}
         {super.renderChildrenWrapper()}
+        {(ruleGroupActionsPosition === 'after') && (
+            this.renderActions()
+        )}
       </>
     );
   }

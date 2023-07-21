@@ -272,6 +272,7 @@ export default (skin: string) => {
       array: [1, 2, 3],
       object: {a: 'a', b: 'b'}
     },
+    ruleGroupActionsPosition: 'after',
     renderField: (props) => {
       console.log('renderField:Start', props);
       return (
