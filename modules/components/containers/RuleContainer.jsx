@@ -137,6 +137,7 @@ const createRuleContainer = (Rule) =>
               valueSrc={this.props.valueSrc || null}
               valueError={this.props.valueError || null}
               valueCustom={this.props.valueCustom || null}
+              selectedSubfields={this.props.selectedSubfields || null}
               operatorOptions={this.props.operatorOptions}
               config={this.props.config}
               reordableNodesCnt={this.props.reordableNodesCnt}
@@ -169,6 +170,7 @@ const createRuleContainer = (Rule) =>
               valueSrc={this.props.valueSrc || null}
               valueError={this.props.valueError || null}
               valueCustom={this.props.valueCustom || null}
+              selectedSubfields={this.props.selectedSubfields || null}
               operatorOptions={this.props.operatorOptions}
               config={this.props.config}
               reordableNodesCnt={this.props.reordableNodesCnt}

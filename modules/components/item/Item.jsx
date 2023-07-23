@@ -45,6 +45,7 @@ const typeMap = {
       isDraggingTempo={props.isDraggingTempo}
       parentField={props.parentField}
       parentReordableNodesCnt={props.parentReordableNodesCnt}
+      selectedSubfields={props.selectedSubfields}
     />
   ),
   group: (props) => (
@@ -63,6 +64,7 @@ const typeMap = {
       children1={props.children1}
       parentField={null}
       parentReordableNodesCnt={props.parentReordableNodesCnt}
+      selectedSubfields={props.selectedSubfields}
     />
   ),
   rule_group: (props) => (
@@ -81,6 +83,7 @@ const typeMap = {
       children1={props.children1}
       parentField={props.parentField}
       parentReordableNodesCnt={props.parentReordableNodesCnt}
+      selectedSubfields={props.selectedSubfields}
     />
   ),
   rule_group_ext: (props) => (
@@ -99,6 +102,7 @@ const typeMap = {
       children1={props.children1}
       parentField={props.parentField}
       parentReordableNodesCnt={props.parentReordableNodesCnt}
+      selectedSubfields={props.selectedSubfields}
     />
   ),
   switch_group: (props) => (
@@ -117,6 +121,7 @@ const typeMap = {
       children1={props.children1}
       parentField={null}
       parentReordableNodesCnt={props.parentReordableNodesCnt}
+      selectedSubfields={props.selectedSubfields}
     />
   ),
   case_group: (props) => (
@@ -135,6 +140,7 @@ const typeMap = {
       children1={props.children1}
       parentField={null}
       parentReordableNodesCnt={props.parentReordableNodesCnt}
+      selectedSubfields={props.selectedSubfields}
     />
   ),
 };

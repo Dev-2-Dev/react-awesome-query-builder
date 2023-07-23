@@ -224,13 +224,24 @@ export class BasicGroup extends PureComponent {
 
   renderItem(item) {
     const props = this.props;
-    const {config, actions, onDragStart, isLocked} = props;
+    const {children1, config, actions, onDragStart, isLocked} = props;
     const isRuleGroup = item.get("type") == "group" && item.getIn(["properties", "field"]) != null;
     const type = isRuleGroup ? "rule_group" : item.get("type");
-    
+
+    const selectedSubfields = [];
+    if(children1) {
+      children1.map((child, id) => {
+        const field = child.get('properties').get('field');
+        if(field) {
+          selectedSubfields.push(child.get('properties').get('field'))
+        }
+      });
+    }
+
     return (
       <Item
         {...this.extraPropsForItem(item)}
+        selectedSubfields={selectedSubfields}
         key={item.get("id")}
         id={item.get("id")}
         groupId={props.id}

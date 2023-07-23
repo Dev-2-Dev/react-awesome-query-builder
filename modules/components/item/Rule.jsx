@@ -119,7 +119,7 @@ class Rule extends PureComponent {
   }
 
   renderField() {
-    const {config, isLocked, valueCustom} = this.props;
+    const {config, isLocked, valueCustom, selectedSubfields} = this.props;
     const { immutableFieldsMode } = config.settings;
 
     return <FieldWrapper
@@ -135,6 +135,7 @@ class Rule extends PureComponent {
       id={this.props.id}
       groupId={this.props.groupId}
       valueCustom={valueCustom}
+      selectedSubfields={selectedSubfields}
     />;
   }
 

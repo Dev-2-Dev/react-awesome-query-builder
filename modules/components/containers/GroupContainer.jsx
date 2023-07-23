@@ -187,6 +187,7 @@ const createGroupContainer = (Group) =>
               children1={this.props.children1}
               actions={this.props.actions}
               valueCustom={this.props.valueCustom || null}
+              selectedSubfields={this.props.selectedSubfields || null}
                 //tree={this.props.tree}
               reordableNodesCnt={this.props.reordableNodesCnt}
               totalRulesCnt={this.props.totalRulesCnt}
@@ -227,6 +228,7 @@ const createGroupContainer = (Group) =>
               children1={this.props.children1}
               actions={this.props.actions}
               valueCustom={this.props.valueCustom || null}
+              selectedSubfields={this.props.selectedSubfields || null}
                 //tree={this.props.tree}
               reordableNodesCnt={this.props.reordableNodesCnt}
               totalRulesCnt={this.props.totalRulesCnt}

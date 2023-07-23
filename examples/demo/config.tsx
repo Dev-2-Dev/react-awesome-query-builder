@@ -274,7 +274,10 @@ export default (skin: string) => {
     },
     ruleGroupActionsPosition: 'after',
     renderField: (props) => {
-      console.log('renderField:Start', props);
+      console.log('renderField:Start', {
+        selectedSubfields: props.selectedSubfields,
+        selectedKey: props.selectedKey,
+      });
       return (
           <React.Fragment>
             <FieldSelect {...props} />
