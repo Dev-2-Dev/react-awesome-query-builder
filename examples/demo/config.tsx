@@ -252,7 +252,8 @@ export default (skin: string) => {
     // showNot: true,
     // showLabels: true,
     maxNesting: 5,
-    canLeaveEmptyGroup: true,
+    canLeaveEmptyGroup: false,
+    canLeaveEmptyRuleGroup: true,
     shouldCreateEmptyGroup: false,
     showErrorMessage: true,
     customFieldSelectProps: {
@@ -274,10 +275,12 @@ export default (skin: string) => {
     },
     ruleGroupActionsPosition: 'after',
     renderField: (props) => {
+      /*
       console.log('renderField:Start', {
         selectedSubfields: props.selectedSubfields,
         selectedKey: props.selectedKey,
       });
+      */
       return (
           <React.Fragment>
             <FieldSelect {...props} />

@@ -856,6 +856,7 @@ export interface BehaviourSettings {
   clearValueOnChangeField?: boolean,
   clearValueOnChangeOp?: boolean,
   canLeaveEmptyGroup?: boolean,
+  canLeaveEmptyRuleGroup?: boolean,
   canLeaveEmptyCase?: boolean,
   shouldCreateEmptyGroup?: boolean,
   forceShowConj?: boolean,

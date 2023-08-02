@@ -44,6 +44,7 @@ export const settings = {
   canDeleteLocked: false,
   showNot: true,
   canLeaveEmptyGroup: true,
+  canLeaveEmptyRuleGroup: true,
   shouldCreateEmptyGroup: false,
   forceShowConj: false,
   canShortMongoQuery: true,

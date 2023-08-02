@@ -82,7 +82,7 @@ const removeGroup = (state, path, config) => {
 const removeRule = (state, path, config) => {
   state = removeItem(state, path);
 
-  const {canLeaveEmptyGroup} = config.settings;
+  const {canLeaveEmptyGroup, canLeaveEmptyRuleGroup} = config.settings;
   const parentPath = path.pop();
   const parent = state.getIn(expandTreePath(parentPath));
 
@@ -95,8 +95,9 @@ const removeRule = (state, path, config) => {
   
   const isParentRuleGroup = parent.get("type") == "rule_group";
   const isEmptyParentGroup = !hasChildren(state, parentPath);
+  
   const canLeaveEmpty = isParentRuleGroup 
-    ? hasGroupCountRule && parentFieldConfig.initialEmptyWhere
+    ? (canLeaveEmptyRuleGroup || (hasGroupCountRule && parentFieldConfig.initialEmptyWhere))
     : canLeaveEmptyGroup;
   
   if (isEmptyParentGroup && !canLeaveEmpty) {
