@@ -259,6 +259,7 @@ export default (skin: string) => {
     customFieldSelectProps: {
       showSearch: true
     },
+    dragIcon: (<button>aaaaa</button>),
     defaultValueCustomRule: {
       isRule: true,
       string: 'string',

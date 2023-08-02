@@ -867,12 +867,16 @@ export interface BehaviourSettings {
   maxNumberOfRules?: Number,
   maxNumberOfCases?: Number,
   showErrorMessage?: boolean,
+  dragIcon?: AnyObject,
   canShortMongoQuery?: boolean,
   convertableWidgets?: TypedMap<Array<string>>,
   removeEmptyGroupsOnLoad?: boolean,
   removeIncompleteRulesOnLoad?: boolean,
   removeInvalidMultiSelectValuesOnLoad?: boolean,
   groupOperators?: Array<string>,
+  defaultValueCustomRule?: AnyObject,
+  defaultValueCustomGroup?: AnyObject,
+  ruleGroupActionsPosition: string,
 }
 
 export interface OtherSettings {

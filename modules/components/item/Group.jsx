@@ -290,13 +290,23 @@ export class BasicGroup extends PureComponent {
   }
 
   renderDrag() {
-    const { handleDraggerMouseDown } = this.props;
+    const { handleDraggerMouseDown, config: {settings} } = this.props;
+    
+    let children;
+    if(!settings.dragIcon) {
+      children = <DragIcon />;
+    } else {
+      children = settings.dragIcon;
+    }
+
     const drag = this.showDragIcon()
       && <span
         key="group-drag-icon"
         className={"qb-drag-handler group--drag-handler"}
         onMouseDown={handleDraggerMouseDown}
-      ><DragIcon /> </span>;
+      >
+          {children}
+      </span>;
     return drag;
   }
 

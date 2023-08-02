@@ -245,13 +245,21 @@ class Rule extends PureComponent {
 
   renderDrag() {
     const { showDragIcon } = this.meta;
+    const { config: {settings} } = this.props;
+
+    let children;
+    if(!settings.dragIcon) {
+      children = <DragIcon />;
+    } else {
+      children = settings.dragIcon;
+    }
 
     return showDragIcon
         && <span
           key="rule-drag-icon"
           className={"qb-drag-handler rule--drag-handler"}
           onMouseDown={this.props.handleDraggerMouseDown}
-        ><DragIcon /> </span>;
+        >{children}</span>;
   }
 
   renderDel() {
