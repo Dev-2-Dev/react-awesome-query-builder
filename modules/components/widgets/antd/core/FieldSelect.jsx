@@ -55,20 +55,19 @@ export default class FieldSelect extends PureComponent {
 
     const fieldSelectItems = this.renderSelectItems(items);
 
-    let res = (
-      <Select
-        dropdownAlign={dropdownAlign}
-        dropdownMatchSelectWidth={false}
-        style={{ width }}
-        placeholder={placeholder}
-        size={config.settings.renderSize}
-        onChange={this.onChange}
-        value={selectedKey || undefined}
-        filterOption={this.filterOption}
-        disabled={readonly}
-        {...customProps}
-      >{fieldSelectItems}</Select>
-    );
+    const selectComponent = this.getSelectComponent();
+    let res = React.createElement(selectComponent, {
+      dropdownAlign,
+      dropdownMatchSelectWidth: false,
+      style: { width },
+      placeholder,
+      size: config.settings.renderSize,
+      onChange: this.onChange,
+      value: selectedKey || undefined,
+      filterOption: this.filterOption,
+      disabled: readonly,
+      ...customProps,
+    }, fieldSelectItems);
 
     if (tooltipText && !selectedOpts.tooltip) {
       res = <Tooltip title={tooltipText}>{res}</Tooltip>;
@@ -86,28 +85,44 @@ export default class FieldSelect extends PureComponent {
       if (items) {
         const simpleItems = items.filter(it => !it.items);
         const complexItems = items.filter(it => !!it.items);
+        const selectOptGroupComponent = this.getSelectOptGroupComponent();
         const gr = simpleItems.length
-          ? [<OptGroup
-            key={pathKey}
-            label={groupPrefix+label}
-          >{this.renderSelectItems(simpleItems, level+1)}</OptGroup>]
+          ? [React.createElement(selectOptGroupComponent, {key: pathKey, label: groupPrefix+label}, this.renderSelectItems(simpleItems, level+1))]
           : [];
         const list = complexItems.length ? this.renderSelectItems(complexItems, level+1) : [];
         return [...gr, ...list];
       } else {
         const option = tooltip ? <Tooltip title={tooltip}>{prefix+label}</Tooltip> : prefix+label;
-        return <Option
-          key={pathKey}
-          value={pathKey}
-          title={altLabel}
-          grouplabel={grouplabel}
-          label={label}
-          disabled={disabled}
-        >
-          {option}
-        </Option>;
+
+        const selectOptionComponent = this.getSelectOptionComponent();
+        return React.createElement(selectOptionComponent, {
+          key: pathKey,
+          value: pathKey,
+          title: altLabel,
+          grouplabel,
+          label,
+          disabled,
+        }, option);
       }
     }).flat(Infinity);
   }
+  
+  getSelectComponent = () => {
+    const {config: {settings}} = this.props;
+    if(settings.fieldSelectComponent) {
+      return settings.fieldSelectComponent
+    } else {
+      return Select
+    }
+  };
 
+  getSelectOptionComponent = () => {
+    const selectComponent = this.getSelectComponent();
+    return selectComponent.Option
+  };
+
+  getSelectOptGroupComponent = () => {
+    const selectComponent = this.getSelectComponent();
+    return selectComponent.OptGroup
+  };
 }

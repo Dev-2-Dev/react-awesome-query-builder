@@ -10,7 +10,7 @@ import moment from "moment";
 import ru_RU from "antd/lib/locale-provider/ru_RU";
 import { ruRU } from "@material-ui/core/locale";
 import { ruRU as muiRuRU } from "@mui/material/locale";
-
+import { Select } from "antd";
 import AntdConfig from "react-awesome-query-builder/config/antd";
 import AntdWidgets from "react-awesome-query-builder/components/widgets/antd";
 import MaterialConfig from "react-awesome-query-builder/config/material";
@@ -275,6 +275,7 @@ export default (skin: string) => {
       object: {a: 'a', b: 'b'}
     },
     ruleGroupActionsPosition: 'after',
+    fieldSelectComponent: Select,
     renderField: (props) => {
       /*
       console.log('renderField:Start', {
